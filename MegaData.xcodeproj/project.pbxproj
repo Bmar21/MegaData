@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2814757A1E4BA947008563F1 /* IntNodeArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 281475781E4BA947008563F1 /* IntNodeArray.cpp */; };
 		28E984641E490F1E009F8135 /* IntNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28E984621E490F1E009F8135 /* IntNode.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		281475781E4BA947008563F1 /* IntNodeArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntNodeArray.cpp; path = Model/IntNodeArray.cpp; sourceTree = "<group>"; };
+		281475791E4BA947008563F1 /* IntNodeArray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IntNodeArray.hpp; path = Model/IntNodeArray.hpp; sourceTree = "<group>"; };
 		2839D5C71E4904810026C796 /* MegaData */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MegaData; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E984621E490F1E009F8135 /* IntNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntNode.cpp; sourceTree = "<group>"; };
 		28E984631E490F1E009F8135 /* IntNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IntNode.hpp; sourceTree = "<group>"; };
@@ -68,6 +71,8 @@
 			children = (
 				28E984621E490F1E009F8135 /* IntNode.cpp */,
 				28E984631E490F1E009F8135 /* IntNode.hpp */,
+				281475781E4BA947008563F1 /* IntNodeArray.cpp */,
+				281475791E4BA947008563F1 /* IntNodeArray.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28E984641E490F1E009F8135 /* IntNode.cpp in Sources */,
+				2814757A1E4BA947008563F1 /* IntNodeArray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
