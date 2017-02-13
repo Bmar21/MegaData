@@ -9,11 +9,18 @@
 #ifndef DataStructureController_hpp
 #define DataStructureController_hpp
 
+#include "../Model/Node.hpp"
+#include <string>
+
+using namespace std;
+
 class DataStructureController
 {
 private:
     void testIntArray();
-    
+    Node<int> numberNode;
+    Node<string> wordNode;
+    void testNodes();
 public:
     DataStructureController();
     void start();
