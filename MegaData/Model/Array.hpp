@@ -11,6 +11,8 @@
 
 #include "Node.hpp"
 #include <assert.h>
+#include <iostream>
+using namespace std; 
 
 template <class Type>
 class Array
@@ -91,6 +93,26 @@ Type Array<Type> :: setAtIndex(int index)
     return value;
 }
 
+/*
+Destructor
+*/
+
+template <class Type>
+int Array<Type> :: getSize() const
+{
+    return size;
+}
+
+/*
+ The role of the destructor is to de-allocate all memory
+ called by the use of 'new' keyword. This is to prevent 
+ problems such as memory leaks.
+ The destructor is NEVER called by the programmer; rather,
+ the destructor is called when either the variable goes out of
+ scope, or the pointer to the variable deleted.
+ The count and cout statements are tempory.
+ 
+ 
 
 
 

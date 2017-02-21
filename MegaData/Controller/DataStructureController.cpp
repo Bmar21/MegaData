@@ -25,7 +25,6 @@ void DataStructureController :: testNodes()
     cout << numberNode.getNodeData() << endl;
 }
 
-
 void DataStructureController :: start()
 {
     cout << "Switching to the IntNodeArray testing" << endl;
