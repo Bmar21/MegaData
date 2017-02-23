@@ -111,9 +111,64 @@ int Array<Type> :: getSize() const
  the destructor is called when either the variable goes out of
  scope, or the pointer to the variable deleted.
  The count and cout statements are tempory.
- 
- 
+ */
 
+template <class Type>
+Array<Type> :: ~Array()
+{
+    int count = size;
+    Node<Type> * remove = front;
+    while(front != nullptr)
+    {
+        //Move to next node in array.
+        front = front->getNodePointer();
+        cout << "Moving to the nedt node. At: " << count << endl;
+        //Delete the  front pointer.
+        delete remove;
+        cout << "Deleteing the old front pointer." << endl;
+        //Move delete to new front.
+        remove = front;
+        cout << "Moving to new front pointer." << endl;
+        count--;
+        cout << "Front is at: " << front << " count is: " << count << endl;
+    }
+}
+ 
+//Copy Constructor- called when you create an instance of an object by assigning it via =.
+template <class Type>
+Array<Type> :: Array(const Array<Type> & toBeCopied)
+{
+    this->size = toBeCopied.getSize();
+    
+    //Build Data Structure
+    this->size = new Node<Type>();
+    for(int index = 1; index < size; index++)
+    {
+        Node<Type> * temp = new Node<Type>();
+        temp->setNodePointer(front);
+        front= temp;
+    }
+    
+    //Copy values into new Array.
+    Node<Type> * copyTemp = toBeCopied.getFront();
+    Node<Type> * updated = this->front;
+    for(int index = 0; index < size; index++)
+    {
+        updated->setNodeData(copyTemp->getNodeData());
+        updated = updated-> getNodePointer();
+        copyTemp = copyTime->getNodePointer();
+    }
+}
+
+/*
+ The const modifier at the end of the method is used to denote that the 
+ method does not impact the state fo the object.
+ */
+template <class Type>
+Node<Type> * Array<Type> :: getFront() const
+{
+    return front;
+}
 
 
 
