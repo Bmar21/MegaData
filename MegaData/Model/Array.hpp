@@ -33,7 +33,7 @@ public:
     int getSize() const;
     Node<Type> * getFront() const;
     
-    void setIndex(int index, Type value);
+    void setAtIndex(int index, Type value);
     Type getFromIndex(int index);
 };
 
@@ -42,7 +42,6 @@ Array<Type> :: Array()
 {
     //Never used
     //Default constructor only supplied to avoid compilation
-        error!
 }
 
 template <class Type>
@@ -55,7 +54,7 @@ Array<Type> :: Array(int size)
     
     for (int index = 1; index < size; index++)
     {
-        Node<Type>() * current = new Node<Type>();
+        Node<Type> * current = new Node<Type>();
         current->setNodePointer(front);
         front = current;
     }
@@ -66,7 +65,7 @@ void Array<Type> :: setAtIndex(int index, Type data)
 {
     assert(index >= 0 && index < size);
     Node<Type> * current = front;
-    for(int spot = 0; spot < index; spott++)
+    for(int spot = 0; spot < index; spot++)
     {
         current = current->getNodePointer();
     }
@@ -75,7 +74,7 @@ void Array<Type> :: setAtIndex(int index, Type data)
 }
 
 template <class Type>
-Type Array<Type> :: setAtIndex(int index)
+Type Array<Type> :: getFromIndex(int index)
 {
     assert(index >= 0 && index < size);
     
@@ -83,9 +82,9 @@ Type Array<Type> :: setAtIndex(int index)
     
     Node<Type>* current = front;
     
-    for(int position = 0; position < index; position++)
+    for(int position = 0; position < index++; position++)
     {
-        current = current->getNodePointer
+        current = current->getNodePointer();
     }
     
     value = current->getNodeData();
@@ -141,7 +140,7 @@ Array<Type> :: Array(const Array<Type> & toBeCopied)
     this->size = toBeCopied.getSize();
     
     //Build Data Structure
-    this->size = new Node<Type>();
+    this->front = new Node<Type>();
     for(int index = 1; index < size; index++)
     {
         Node<Type> * temp = new Node<Type>();
@@ -156,7 +155,7 @@ Array<Type> :: Array(const Array<Type> & toBeCopied)
     {
         updated->setNodeData(copyTemp->getNodeData());
         updated = updated-> getNodePointer();
-        copyTemp = copyTime->getNodePointer();
+        copyTemp = copyTemp->getNodePointer();
     }
 }
 
@@ -169,8 +168,5 @@ Node<Type> * Array<Type> :: getFront() const
 {
     return front;
 }
-
-
-
 
 #endif /* Array_h */
