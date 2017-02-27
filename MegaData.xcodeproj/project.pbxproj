@@ -33,6 +33,7 @@
 		282018C91E4BB6E000B374DE /* NodeRunner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NodeRunner.cpp; path = Controller/NodeRunner.cpp; sourceTree = "<group>"; };
 		2839D5C71E4904810026C796 /* MegaData */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MegaData; sourceTree = BUILT_PRODUCTS_DIR; };
 		284E281C1E5CDA750064936D /* List.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = List.hpp; path = Model/List.hpp; sourceTree = "<group>"; };
+		285BC3CA1E64C73B000D9252 /* BiDirectionalNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = BiDirectionalNode.hpp; path = Model/BiDirectionalNode.hpp; sourceTree = "<group>"; };
 		289379E91E523E7F006F705C /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Node.hpp; path = Model/Node.hpp; sourceTree = "<group>"; };
 		28C70E0A1E54E42D0085D5D1 /* Array.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Array.hpp; path = Model/Array.hpp; sourceTree = "<group>"; };
 		28E984621E490F1E009F8135 /* IntNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntNode.cpp; path = Model/IntNode.cpp; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 				289379E91E523E7F006F705C /* Node.hpp */,
 				28C70E0A1E54E42D0085D5D1 /* Array.hpp */,
 				284E281C1E5CDA750064936D /* List.hpp */,
+				285BC3CA1E64C73B000D9252 /* BiDirectionalNode.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
