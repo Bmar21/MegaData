@@ -36,6 +36,7 @@
 		28580AF91E675D3B000B4E24 /* DoublyLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = DoublyLinkedList.hpp; path = Model/DoublyLinkedList.hpp; sourceTree = "<group>"; };
 		285BC3CA1E64C73B000D9252 /* BiDirectionalNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = BiDirectionalNode.hpp; path = Model/BiDirectionalNode.hpp; sourceTree = "<group>"; };
 		289379E91E523E7F006F705C /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Node.hpp; path = Model/Node.hpp; sourceTree = "<group>"; };
+		289A4D231E67682D0095DD51 /* CircularList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = CircularList.hpp; path = Model/CircularList.hpp; sourceTree = "<group>"; };
 		28C70E0A1E54E42D0085D5D1 /* Array.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Array.hpp; path = Model/Array.hpp; sourceTree = "<group>"; };
 		28E984621E490F1E009F8135 /* IntNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntNode.cpp; path = Model/IntNode.cpp; sourceTree = "<group>"; };
 		28E984631E490F1E009F8135 /* IntNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IntNode.hpp; path = Model/IntNode.hpp; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 				284E281C1E5CDA750064936D /* List.hpp */,
 				285BC3CA1E64C73B000D9252 /* BiDirectionalNode.hpp */,
 				28580AF91E675D3B000B4E24 /* DoublyLinkedList.hpp */,
+				289A4D231E67682D0095DD51 /* CircularList.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
