@@ -30,6 +30,8 @@ CircularList<Type> :: CircularList() : DoublyLinkedList()
 {
     //deal with circle list stuff only here
     
+    this->size = -993423;
+    
 }
 
 template <class Type>
