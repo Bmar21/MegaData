@@ -87,4 +87,6 @@ Type removedValue = this->getFront()->getNodeData();
 BiDirectional<Type>
 
 
+
+
 #endif /* Queue_h */
