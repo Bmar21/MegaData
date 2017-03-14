@@ -92,3 +92,30 @@ void DataStructureController :: testListIntro()
     cout << "Size should read 3 and is " << sample.getSize() << endl;
     
 }
+
+void DataStructureController :: testIntStack()
+{
+    Stack<int> numberStack;
+    numberStack.add(2315);
+    numberStack.puch(32);
+    int testValue = numberStack.pop();
+    cout << "Test value is " << testValue << " and should be 32" << endl
+}
+
+
+
+
+void DataStructureController :: testFoodQueue()
+{
+    Queue<FoodItem> tastyFood;
+    FoodItem szechwan("spicy chinese dish");
+    
+    tastyFood.enqueue(szechwan);
+    FoodItem boring;
+    tastyFood.add(boring);
+    
+    FoodItem removed = tastyFood.dequeue();
+    cout << "The item removed from the queue was: " << removed.getFoodName() << " and should be: spicy chinese dish" << endl;
+}
+
+

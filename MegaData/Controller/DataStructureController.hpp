@@ -11,7 +11,13 @@
 
 #include "../Model/Node.hpp"
 #include "../Model/Array.hpp"
+#include "../ModelFoodItem.hpp"
 #include "../Model/List.hpp"
+#include "../Model/IntNodeArray.hpp"
+#include "../Model/DoubleList.hpp"
+#include "../Model/Stack.hpp"
+#include "../Model/Queue.hpp"
+#include "../CircularList.hpp'
 #include <string>
 
 using namespace std;
@@ -20,11 +26,13 @@ class DataStructureController
 {
 private:
     void testIntArray();
-    Node<int> numberNode;
+    void testNodesTypes();
+    Node<int> numberNode:
     Node<string> wordNode;
-    void testNodes();
     void testAdvancedFeatures();
     void testListIntro();
+    void testDouleLists();
+    void testListTiming();
 public:
     DataStructureController();
     void start();
