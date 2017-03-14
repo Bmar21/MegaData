@@ -57,4 +57,10 @@ void Stack<Type> :: push(Type addedThing)
     this->setSize(this->getSize() + 1);
 }
 
+template <class Type>
+Type Stack<Type> :: peek()
+{
+    assert(this->getSize() > 0);
+    
+}
 #endif /* Stack_h */
