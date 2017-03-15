@@ -46,6 +46,21 @@ Queue<Type> :: ~Queue()
     }
 }
 
+template<class Type>
+void Queue<Type> :: add(Type value)
+{
+    enqueue(value);
+}
+
+/*
+    Add to Queue:
+    Create Node
+    If First - adjust front
+    else add to end
+    move end 
+    adjust size
+ */
+
 template <class Type>
 void Queue<Type> :: enqueue(Type insertedValue)
 {
