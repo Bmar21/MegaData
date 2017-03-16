@@ -15,6 +15,7 @@ template <class Type>
 class CircularList : public DoublyLinkedList<Type>
 {
 private:
+    
 public:
     Queue();
     ~Queue();
@@ -81,6 +82,7 @@ void Queue<Type> :: enqueue(Type insertedValue)
 /*
  Remove from Queue
  Check vaild index
+ call dequeue
  */
 
 template<class Type>
@@ -91,17 +93,45 @@ Type Queue<Type> :: remove(int index)
 }
 
 /*
- Check size
- If size = 1
- adjust front/end to nullptr
- size
+    Check size
+    If size = 1
+        adjust front/end to nullptr
+    else
+        move front to next
+    delete node
+    ajust size
+ return value
     move from to next 
 */
 
-Type removedValue = this->getFront()->getNodeData();
-BiDirectional<Type>
+template<class Type>
+Type Queue<Type> :: dequeue()
+{
+    Type removedValue = this->getFront()->getNodeData;
+    BiDirectional<Type> * removeMe = this->getFront();
+    if(this->getSize() == 1)
+    {
+        this->setFront(nullptr);
+        this->setEnd(nullptr);
+    }
+    else
+    {
+        this->setFront(removeMe->nextPointer());
+        this->getFront()->setPreviousPointer(nullptr);
+    }
+    
+    delete removeMe;
+    this->setSize(this->getSize - 1);
+    
+    return removeedValue;
+}
 
-
-
+template<class Type>
+Type Queue<Type> :: peek()
+{
+    assert(this->getSize() > 0);
+    
+    return this->getFront()->getNodeData();
+}
 
 #endif /* Queue_h */
