@@ -9,8 +9,9 @@
 #ifndef DoubleList_h
 #define DoubleList_h
 
-#include "DoubleyLinkedList.hpp"
+#include "DoublyLinkedList.hpp"
 
+template <class Type>
 class DoubleList : public DoublyLinkedList<Type>
 {
 private:
@@ -21,7 +22,7 @@ public:
     Type remove(int index);
     void addAtIndexFast(int index, TypeValue);
     void addAtIndex(int index);
-    Type getFromIndex(intn index);
+    Type getFromIndex(int index);
     Type getFromIndexFast(int index);
 };
 
