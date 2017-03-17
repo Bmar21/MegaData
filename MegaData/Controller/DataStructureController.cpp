@@ -13,42 +13,23 @@ using namespace std;
 
 DataStructureController :: DataStructureController()
 {
-    wordNode = Node<string>("derpy mc");
-    numberNode = Node<int>();
+    
 }
 
 void DataStructureController :: testNodes()
 {
-    cout << "The contents of the Node<string>" << endl;
+    cout << "" << endl;
     cout << wordNode.getNodeData() << endl;
-    cout << "Here is the Node<int>" << endl;
+    cout << "" << endl;
     cout << numberNode.getNodeData() << endl;
 }
 
 void DataStructureController :: start()
 {
-    cout << "Switching to the IntNodeArray testing" << endl;
-    testNodes();
-    cout << "Finished testing" << endl;
-}
+    cout << "Starting the project" << endl;
 
-void DataStructureController :: testAdvancedFeatures()
-{
-    int showDestructor = 0;
     
-    if(showDestructor < 1)
-    {
-        Array<string> words = Array<string>(5);
-        cout << "There should be messages about destructor next" << endl;
-    }
-    Array<string> words = Array<string>(4);
-    words.setAtIndex(0, "at zero");
-    words.setAtIndex(3, "in the last spot");
-    Array<string> copiedWords = Array<string>(words);
-    
-    cout << "These should match:" << endl;
-    cout << words.getFromIndex(0) << " should be the same as " << copiedWords.getFromIndex(0) << endl;
-    copiedWords.setAtIndex(3, "Chnaged the contents of th ecopied Array");
+    cout << "Finished testing" << endl;
 }
 
 void DataStructureController :: testIntArray()
@@ -93,6 +74,69 @@ void DataStructureController :: testListIntro()
     
 }
 
+void DataStructureController :: testAdvancedFeatures()
+{
+    int showDestructor = 0;
+    
+    if(showDestructor < 1)
+    {
+        Array<string> words = Array<string>(5);
+        cout << "There should be messages about destructor next" << endl;
+    }
+    Array<string> words = Array<string>(4);
+    words.setAtIndex(0, "at zero");
+    words.setAtIndex(3, "in the last spot");
+    Array<string> copiedWords = Array<string>(words);
+    
+    cout << "These should match:" << endl;
+    cout << words.getFromIndex(0) << " should be the same as " << copiedWords.getFromIndex(0) << endl;
+    copiedWords.setAtIndex(3, "Chnaged the contents of th ecopied Array");
+}
+
+void DataStructureController :: testListTiming()
+{
+    DoubleList<int> timingList;
+    Timer totalTimer;
+    totalTimer.startTimer();
+    for(int index=0; index < 10000; index++)
+    {
+        timingList.add(rand());
+    }
+    
+    long slowTime [1000];
+    long fastTime [1000];
+    double averageSlow = 0.00, averageFast = 0.0;
+    Timer doubleTimer;
+    
+    for(int index = 0; index < 1000; index++)
+    {
+        int randomIndex = rand() % 10000;
+        doubleTimer.start();
+        timingList.getFromIndex(randomIndex);
+        doubleTimer.stopTimer();
+        slowTime[index] = doubleTimer.getExcecutionTimeInMicroSeconds();
+        doubleTimer.resetTimer();
+        
+        
+        doubleTimer.startTimer();
+        timingList.getFromIndex(randomIndex);
+        doubleTimer.stopTimer();
+        fastTime[index] = doubleTimer.getExecutionTimeinMicroSeconds();
+        doubleTimer.resetTimer();
+        
+        averageSlow += slowTime[index];
+        averageFast += fastTime[index];
+    }
+    
+    averageSlow = averageSlow/1000.00;
+    averageFast = averageFast/1000.00;
+    totalTimer.stopTimer();
+    
+    cout << "The average speed for the getFromIndex method was: " << averageSlow << " microseconds." << endl;
+    
+    cout << "The average speed for the getFromIndex method was: " << averageFast << " microseconds." << endl;
+}
+
 void DataStructureController :: testIntStack()
 {
     Stack<int> numberStack;
@@ -101,9 +145,6 @@ void DataStructureController :: testIntStack()
     int testValue = numberStack.pop();
     cout << "Test value is " << testValue << " and should be 32" << endl
 }
-
-
-
 
 void DataStructureController :: testFoodQueue()
 {

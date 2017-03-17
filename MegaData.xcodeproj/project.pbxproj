@@ -10,6 +10,7 @@
 		280276181E7711F60020D675 /* FoodItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280276161E7711F60020D675 /* FoodItem.cpp */; };
 		2814757A1E4BA947008563F1 /* IntNodeArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 281475781E4BA947008563F1 /* IntNodeArray.cpp */; };
 		2814757D1E4BB223008563F1 /* DataStructureController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2814757B1E4BB223008563F1 /* DataStructureController.cpp */; };
+		281FCD8A1E7C5DAD009B6891 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 281FCD881E7C5DAD009B6891 /* Timer.cpp */; };
 		282018CA1E4BB6E000B374DE /* NodeRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282018C91E4BB6E000B374DE /* NodeRunner.cpp */; };
 		28E984641E490F1E009F8135 /* IntNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28E984621E490F1E009F8135 /* IntNode.cpp */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,8 @@
 		281475791E4BA947008563F1 /* IntNodeArray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IntNodeArray.hpp; path = Model/IntNodeArray.hpp; sourceTree = "<group>"; };
 		2814757B1E4BB223008563F1 /* DataStructureController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DataStructureController.cpp; path = Controller/DataStructureController.cpp; sourceTree = "<group>"; };
 		2814757C1E4BB223008563F1 /* DataStructureController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DataStructureController.hpp; path = Controller/DataStructureController.hpp; sourceTree = "<group>"; };
+		281FCD881E7C5DAD009B6891 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = Model/Timer.cpp; sourceTree = "<group>"; };
+		281FCD891E7C5DAD009B6891 /* Timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Timer.hpp; path = Model/Timer.hpp; sourceTree = "<group>"; };
 		282018C91E4BB6E000B374DE /* NodeRunner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NodeRunner.cpp; path = Controller/NodeRunner.cpp; sourceTree = "<group>"; };
 		2839D5C71E4904810026C796 /* MegaData */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MegaData; sourceTree = BUILT_PRODUCTS_DIR; };
 		284E281C1E5CDA750064936D /* List.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = List.hpp; path = Model/List.hpp; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				289A4D231E67682D0095DD51 /* CircularList.hpp */,
 				280276161E7711F60020D675 /* FoodItem.cpp */,
 				280276171E7711F60020D675 /* FoodItem.hpp */,
+				281FCD881E7C5DAD009B6891 /* Timer.cpp */,
+				281FCD891E7C5DAD009B6891 /* Timer.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				28E984641E490F1E009F8135 /* IntNode.cpp in Sources */,
 				2814757D1E4BB223008563F1 /* DataStructureController.cpp in Sources */,
 				2814757A1E4BA947008563F1 /* IntNodeArray.cpp in Sources */,
+				281FCD8A1E7C5DAD009B6891 /* Timer.cpp in Sources */,
 				282018CA1E4BB6E000B374DE /* NodeRunner.cpp in Sources */,
 				280276181E7711F60020D675 /* FoodItem.cpp in Sources */,
 			);
