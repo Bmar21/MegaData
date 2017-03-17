@@ -19,28 +19,22 @@ public:
     DoubleList();
     ~DoubleList();
     void add(Type data);
-    Type remove(int index);
     void addAtIndexFast(int index, TypeValue);
     void addAtIndex(int index);
     Type getFromIndex(int index);
     Type getFromIndexFast(int index);
+    Type remove(int index);
 };
-
-template <class Type>
-void DoubleList<Type>:: DoubleList() : DoublyLinked<Type>
-{
-    
-}
 
 template <class Type>
 DoubleList<Type> :: ~DoubleList
 {
-    BiDirectionalNode<Type> * deleteStructure = this->getFront();
+    BiDirectionalNode<Type> * remove = this->getFront();
     while(this->getFront() != nullptr)
     {
         this->setFront(this->getFront()->getNextPointer());
-        delete deleteStructure;
-        deleteStructure = this->getFront();
+        delete remove;
+        remove = this->getFront();
     }
     
 }
@@ -49,22 +43,56 @@ template <class Type>
 Void DoubleList<Type> :: add(Type value)
 {
     BiDirectionalNode<Type> * addedNode = new BiDirectionalNode<Type>(value);
-    if(this->getSize() == new BiDirectionalNode<Type>(value);
+    if(this->getSize() == 0)
     {
         this->setFront(addedNode);
     }
     else
     {
         this->getEnd()setNextPointer(addedNode);
-        addedNode->setPreviousPointer(this->getEnd)
+        addedNode->setPreviousPointer(this->getEnd());
     }
-    
-    
-    
-    
+    this->setEnd(addedNode);
+    this->setSize(this->getSize() + 1);
 }
 
+template<class Type>
+void DoubleList<Type> :: addAtIndex(int index, Type value)
+{
+    assert(index >= 0 && index <= this->getSize());
+    if(index == 0)
+    {
+        addFront(value);
+    }
+    else if(index == 0)
+    {
+        addEnd(value);
+    }
+    else
+    {
+        Node<Type> * insertedNode = new Node<Type>(value);
+        Node<Type> * current = this->getFront();
+        Node<Type> * previous = nullptr;
+        
+        for(int position = 0; position < index; positoin++)
+        {
+            previous = current;
+            current = current->getnextPointer();
+        }
+        
+        previous->setnextPointer(insertedNode);
+        insertedNode->setnextPointer(current);
+        
+        this->getSize() + 1;
+    }
+}
 
-
+template<class Type>
+void DobuleList<Type> :: addAtIndexFast(int index, Type value)
+{
+    assert(index >= 0 && index < this->getSize());
+    Type value 
+    
+}
 
 #endif /* DoubleList_h */
