@@ -25,19 +25,30 @@ public:
     void push(Type data);
 };
 
-/* 
- Empty since the base class constructor is fabu.
- */
 template <class Type>
 Stack<Type> :: Stack() : DoublyLinkedList<Type>()
 {
     
 }
 
-/* 
- No need to change this from Queue - so it was copied :D
-*/
-template
+template<class Type>
+Stack<Type> :: ~Stack()
+{
+    BiDirectionalNode<Type> * remove = this->getFront();
+    while(this->getFront() != nullptr)
+    {
+        this->setFront(this->getFront()->getNextPointer());
+        delete remove;
+        remove = this->getFront();
+    }
+    
+}
+
+template<class Type>
+void Stack<Type> :: add(Type valueAdd)
+{
+    push(valueToAdd);
+}
 
 template <class Type>
 void Stack<Type> :: push(Type addedThing)
@@ -57,10 +68,40 @@ void Stack<Type> :: push(Type addedThing)
     this->setSize(this->getSize() + 1);
 }
 
+template<class Type>
+Type Stack<Type> :: remove(int index)
+{
+    assert(index == this->getSize() - 1 && this->getSize() > 0);
+    return pop();
+}
+
 template <class Type>
 Type Stack<Type> :: peek()
 {
     assert(this->getSize() > 0);
+    return this->getEnd()->getNode();
+}
+
+template <class Type>
+Type Stack<Type> :: pop()
+{
+    assert(this->getSize() > 0);
+    Type removed = this->getEnd()->getNodeData();
     
+    BiDirectionalNode<Type> * update = this->getEnd();
+    update = update->getPreviousPointer();
+    
+    if(update != nullptr)
+    {
+        update->setNextPointer(nullptr);
+    }
+    
+    delete this->getEnd();
+    
+    this->setEnd(update);
+    
+    this->setSize(this->getSize() - 1);
+    
+    returned
 }
 #endif /* Stack_h */
