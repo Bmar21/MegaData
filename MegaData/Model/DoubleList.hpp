@@ -91,8 +91,58 @@ template<class Type>
 void DobuleList<Type> :: addAtIndexFast(int index, Type value)
 {
     assert(index >= 0 && index < this->getSize());
-    Type value 
+    Type valueAtIndex;
+    BiDirectionalNode<Type> * reference;
+    if(index < this->getSize() / 2)
+    {
+        reference = this->getFront();
+        for(int position = 0; position < index; position++)
+        {
+            reference = reference->getNextPointer();
+        }
+    }
+    else
+    {
+        reference = this->getEnd();
+        for(int position = this->getSize() - 1; position > index; position--)
+        {
+            reference = reference->getPreviousPointer();
+        }
+    }
+    
+    valueAtIndex = reference->getNodeData();
+    return valueAtIndex;
     
 }
+
+template<class Type>
+Type DoubleList<Type> :: getFromIndex(int index)
+{
+    assert(index >= 0 && index <this->getSize());
+    Type valueAtIndex;
+    
+    BiDireectionalNode<Type> * reference = this->getFront();
+    for(int position = 0; position < index; position++)
+    {
+        reference = reference->getNextPointer();
+    }
+    valueAtIndex = reference->getNodeData();
+    
+    return valueAtIndex;
+    
+}
+
+template<class Type>
+Type DoubleList<Type> 
+
+
+
+
+
+
+
+
+
+
 
 #endif /* DoubleList_h */

@@ -160,14 +160,4 @@ Type CircularList<Type> :: setAtIndex(int index, Type data)
 
 
 
-
-
-
-
-
-
-
-
-
-
 #endif /* CircularList_h */
