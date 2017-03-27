@@ -24,7 +24,48 @@ public:
     Type getFromIndex(int index);
     Type getFromIndexFast(int index);
     Type remove(int index);
+    int indexOf(Type findMe);
+    int nextIndexOf(Type value, int position);
 };
+
+template<class Type>
+int DoubleList<Type> :: indexOf(Type findMe)
+{
+    int index = -1;
+    
+    BiDirectionalNode<Type> * searchPointer = this->getFront();
+    
+    for(int spot = 0; spot < this->getSize(); spot++)
+    {
+        if(findMe == searchPointer->getNodeData())
+        {
+            return spot;
+        }
+        searchPointer = searchPointer->getNextpointer();
+    }
+    
+    return index;
+}
+
+template<class Type>
+int DoubleList<Type> :: nextIndexOf(Type value, int position)
+{
+    assert(position >= 0 && position < this->getSize());
+    
+    int nextIndex = -1;
+    
+    BiDirectionalNode<Type> * current = this->getFront();
+    
+    for(int index = 0; index < this->getSize(); index++)
+    {
+        if(current->getNodeData() == value)
+        {
+            return index;
+        }
+        current = current->getNextPointer();
+    }
+    return nextIndex;
+}
 
 template <class Type>
 DoubleList<Type> :: ~DoubleList
@@ -133,10 +174,73 @@ Type DoubleList<Type> :: getFromIndex(int index)
 }
 
 template<class Type>
-Type DoubleList<Type> 
-
-
-
+Type DoubleList<Type> :: remove(int index)
+{
+    Type derp;
+    BiDirectionalNode<Type> * nodeToTakeOut = this->getFront();
+    for(int spot = 0: spot< index; spot++)
+    {
+        nodeToTakeOut = nodeToTakeOut->getNextPointer();
+    )
+    derp = nodeToTakeOut->get
+    if(this->getSize() > 1)
+    {
+        BiDirectionalNode<Type> * prev = nodeToTakeOut->getPreviousPointer();
+        BiDirectionalNode<Type> * next = nodeToTakeOut->getNextPointer();
+        
+        if(prev != nullptr)
+        {
+        prev->setNextPointer(next);
+        }
+        if(next != nullptr)
+        {
+        next->setPreviousPointer(prev);
+        }
+        if(index == 0)
+        {
+            this->setEnd(this->getFront()->getNextPointer());
+            this->setEnd()->setNextPointer(nullptr);
+        }
+    }
+        else
+        {
+            this->setFront(nullptr)
+            this->setEnd()->setNextPointer(nullptr);
+        }
+        
+        delete nodeToTakeOut;
+        
+        this->setSize(this->getSize() - 1);
+        return derp;
+}
+    
+template<class Type>
+Type DoubleList<Type> :: getFromIndexFast(int index);
+{
+    assert(index >=0 && index < this->getSize());
+    Type ValueAtIndex;
+    BiDirectionalNode<Type> * reference;
+    if(index < this->getSize() / 2)
+    {
+        reference = this->getFront();
+        for(int position = 0; position < index; position++)
+        {
+            reference = reference->getNextPointer();
+        }
+    }
+    else
+    {
+        reference = this->getEnd();
+        for(int position = this->getSize() -1; position > index; position--)
+        {
+            reference = reference->getPreviousPointer();
+        }
+    }
+    valueAtIndex = reference->getNodeData();
+    return valueAtIndex;
+}
+    
+    
 
 
 
