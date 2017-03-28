@@ -33,3 +33,41 @@ double FoodItem :: getCost()
 {
     return cost;
 }
+
+bool FoodItem :: isDelicious()
+{
+    return delicious;
+}
+
+void FoodItem :: setCalories(int calories)
+{
+    this->calories = calories;
+}
+
+void FoodItem :: setCost(double cost)
+{
+    this->cost = cost;
+}
+
+void FoodItem :: setFoodName(string foodName)
+{
+    this->foodName = foodName;
+}
+
+void FoodItem :: setDelicious(bool delicious)
+{
+    this->delicious = delicious;
+}
+
+bool FoodItem :: operator < (FoodItem & otherFood)
+{
+    if(this->isDelicious() && otherFood.isDelicious())
+    {
+        if(this->getCalories() && otherFood.getCalories())
+        {
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
