@@ -21,7 +21,7 @@ public:
     void add(Type value);
     Type remove(int index);
     Type pop();
-    Type peek():
+    Type peek();
     void push(Type data);
 };
 
@@ -45,7 +45,7 @@ Stack<Type> :: ~Stack()
 }
 
 template<class Type>
-void Stack<Type> :: add(Type valueAdd)
+void Stack<Type> :: add(Type valueToAdd)
 {
     push(valueToAdd);
 }
@@ -53,7 +53,7 @@ void Stack<Type> :: add(Type valueAdd)
 template <class Type>
 void Stack<Type> :: push(Type addedThing)
 {
-    BiDirectionalNode<Type> * addtoStack = new BiDirectionalNode<type>(addedThing);
+    BiDirectionalNode<Type> * addToStack = new BiDirectionalNode<Type>(addedThing);
     
     if(this->getSize() == 0 || this->getFront() == nullptr || this->getEnd() == nullptr)
     {
@@ -102,6 +102,6 @@ Type Stack<Type> :: pop()
     
     this->setSize(this->getSize() - 1);
     
-    returned
+    return removed;
 }
 #endif /* Stack_h */

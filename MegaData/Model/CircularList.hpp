@@ -26,13 +26,13 @@ public:
 };
 
 template <class Type>
-CircularList<Type> :: CircularList() : DoublyLinkedList()
+CircularList<Type> :: CircularList() : DoublyLinkedList<Type>()
 {
     
 }
 
 template <class Type>
-void CircularList<Type> :: ~CircularList()
+CircularList<Type> :: ~CircularList()
 {
     BiDirectionalNode<Type> * remove = this->getFront();
     while(this->getFront() != nullptr)
@@ -47,7 +47,7 @@ void CircularList<Type> :: ~CircularList()
 template <class Type>
 BiDirectionalNode<Type> * CircularList<Type> :: findNode(int index)
 {
-    BiDirectionalNode<Type> * nodeTofind;
+    BiDirectionalNode<Type> * nodeToFind;
     if(index < this->getSize() / 2)
     {
         nodeToFind = this->getFront();
@@ -61,7 +61,7 @@ BiDirectionalNode<Type> * CircularList<Type> :: findNode(int index)
         nodeToFind = this->getEnd();
         for(int spot = this->getSize() - 1; spot >index; spot--)
         {
-            nodeToFind = nodeTofind->getPreviousPointer();
+            nodeToFind = nodeToFind->getPreviousPointer();
         }
     }
     return nodeToFind;
@@ -99,7 +99,7 @@ Type CircularList<Type> :: remove(int index)
     
     BiDirectionalNode<Type> * removed = findNode(index);
     
-    removedValue = removed->getNodeData();
+    removeValue = removed->getNodeData();
     
     BiDirectionalNode<Type> * oldPrevious = removed->getPreviousPointer();
     BiDirectionalNode<Type> * oldNext = removed->getNextPointer();
@@ -127,26 +127,26 @@ Type CircularList<Type> :: remove(int index)
     delete removed;
     this->setSize(this->getSize()-1);
         
-    return removedValue;
+    return removeValue;
 }
 
 template <class Type>
 Type CircularList<Type> :: getFromIndex(int index)
 {
-    assert(index >= 0 && < this->getSize());
+    assert(index >= 0 && index < this->getSize());
     Type retrived;
     
     BiDirectionalNode<Type> * current = findNode(index);
     
     retrived = current->getNodeData();
     
-    return retrieved;
+    return retrived;
 }
 
 template <class Type>
 Type CircularList<Type> :: setAtIndex(int index, Type data)
 {
-    assert(index >= 0 && < this->getSize());
+    assert(index >= 0 && index < this->getSize());
     
     Type replaced;
     

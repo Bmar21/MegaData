@@ -9,10 +9,10 @@
 #ifndef Queue_h
 #define Queue_h
 
-#include "DoublyLinkedList"
+#include "DoublyLinkedList.hpp"
 
 template <class Type>
-class CircularList : public DoublyLinkedList<Type>
+class Queue : public DoublyLinkedList<Type>
 {
 private:
     
@@ -108,7 +108,7 @@ template<class Type>
 Type Queue<Type> :: dequeue()
 {
     Type removedValue = this->getFront()->getNodeData;
-    BiDirectional<Type> * removeMe = this->getFront();
+    BiDirectionalNode<Type> * removeMe = this->getFront();
     if(this->getSize() == 1)
     {
         this->setFront(nullptr);
@@ -123,7 +123,7 @@ Type Queue<Type> :: dequeue()
     delete removeMe;
     this->setSize(this->getSize - 1);
     
-    return removeedValue;
+    return removedValue;
 }
 
 template<class Type>

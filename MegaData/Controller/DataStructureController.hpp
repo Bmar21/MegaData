@@ -16,7 +16,7 @@
 #include "../Model/DoubleList.hpp"
 #include "../Model/Stack.hpp"
 #include "../Model/Queue.hpp"
-#include "../Model/CircularList.hpp'
+#include "../Model/CircularList.hpp"
 #include "../Model/FoodItem.hpp"
 #include "../Model/Timer.hpp"
 #include<string>
@@ -36,7 +36,7 @@ private:
     void testListTiming();
     void testFoodQueue();
     void testIntStack();
-    Node<int> numberNode:
+    Node<int> numberNode;
     Node<string> wordNode;
 public:
     DataStructureController();
