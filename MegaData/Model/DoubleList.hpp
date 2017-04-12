@@ -239,5 +239,6 @@ Type DoubleList<Type> :: getFromIndexFast(int index)
     valueAtIndex = reference->getNodeData();
     return valueAtIndex;
 }
-    
+
+
 #endif /* DoubleList_h */
