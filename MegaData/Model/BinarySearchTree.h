@@ -140,124 +140,13 @@ void BinarySearchTree<Type> :: postOrderTraversal(BinarySearchTreeNode<Type> * p
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-template <class Type>
-bool BinarySearchTree<Type> * current = root;
+template<class Type>
+bool BinarySearchTree<Type> :: contains(Type itemToFind)
 {
     BinarySearchTreeNode<Type> * current = root;
     if(current == nullptr)
     {
+        
         return false;
     }
     else
@@ -268,9 +157,9 @@ bool BinarySearchTree<Type> * current = root;
             {
                 return true;
             }
-            else if (itemToFind < current->getNodeData())
+            else if(itemToFind < current->getLeftChild())
             {
-                current = current->getLifeChild();
+                current = current->getRightChild();
             }
             else
             {
@@ -280,32 +169,6 @@ bool BinarySearchTree<Type> * current = root;
         return false;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 template <class Type>
 void BinarySearch<Type> :: insert(Type itemInsert)
@@ -420,8 +283,166 @@ void BinarySearchTree<Type> :: removeNode(BinarySearchTreeNode<Type> * & removeM
     {
         temp = removeMe;
         removeMe = nullptr;
+        
+        if(previous != nullptr && removeMe->getNodeData() < previous->getNodeData())
+        {
+            previous->setLeftChild(removeMe);
+        }
+        else if(previous != nullptr &&& removeMe->getNodeData() > previous->getNodeData())
+        {
+            previous->setRightChild(removeMe);
+        }
+        
+        delete temp;
+    }
+    //Has only left child
+    else if(removeMe->getRightChild() == nullptr
+    {
+        temp = removeMe;
+        removeMe = removeMe->getLeftChild();
+        
+        if(previous != nullptr && temp->getNodeData() < previous->getNodeData())
+        {
+            previous->setLeftChild(removeMe);
+        }
+        else if(previous != nullptr && temp->getNodeData() > previous->getNodeData)
+        {
+            previous->setRightChild(removeMe);
+        }
+        
+        removeMe->setRootPointer(previous);
+        
+        delete temp;
+    }
+            
+    //Has only right Child
+    else if(removeMe->getLeftChild() == nullptr)
+    {
+        temp = removeMe;
+        removeMe = removeMe->getRightChild();
+        
+        if(previous != nullptr && temp->getNodeData() < previous->getNodeData())
+        {
+            previous->setLeftChild(removeMe);
+        }
+        else if(previous != nullptr && temp->getNodeData() > previous->getNodeData)
+        {
+            previous->setRightChild(removeMe);
+        }
+        
+        removeMe->setRootPointer(previous);
+        
+        delete temp;
+            
+    }
+    
+    //Has Both Children
+    else
+    {
+        current = removeMe->getLeftChild();
+        previous = nullptr;
+        
+        removeMe->setNodeData(Current->getNodeData());
+        
+        if(previous == nullptr)
+        {
+            prevous = current;
+            current = current->getRightChild();
+        }
+        
+        removeMe->setNodeData(current->getNodeData());
+        
+        if(previous == nullptr)
+        {
+            
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+template <class Type>
+bool BinarySearchTree<Type> * current = root;
+{
+    BinarySearchTreeNode<Type> * current = root;
+    if(current == nullptr)
+    {
+        return false;
+    }
+    else
+    {
+        while(current != nullptr)
+        {
+            if(itemToFind == current->getNodeData())
+            {
+                return true;
+            }
+            else if (itemToFind < current->getNodeData())
+            {
+                current = current->getLifeChild();
+            }
+            else
+            {
+                current = current->getRightChild();
+            }
+        }
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
