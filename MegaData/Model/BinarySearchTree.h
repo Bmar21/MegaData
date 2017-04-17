@@ -11,6 +11,7 @@
 
 #include "Tree.hpp"
 #include "BinarySearchTreeNode.hpp"
+#include <iostream>
 
 template <class Type>
 class BinarySearchTree : public Tree<Type>
@@ -53,15 +54,91 @@ BinarySearchTreeNode<Type> :: BinarySearchTree() : Tree<Type>()
     this->root = nullptr;
 }
 
+template<class Type>
+BinarySearchTree<Type> :: ~BinarySearchTree()
+{
+    
+}
 
+template<class Type>
+BinarySearchTreeNode<Type> * BinarySearchTree<Type> :: getRoot()
+{
+    return this->root;
+}
 
+template<class Type>
+void BinarySearchTree<Type> :: setRoot(BinarySearchTreeNode<Type> * root)
+{
+    this->root = root;
+}
 
+template<class Type>
+void BinarySearchTree<Type> :: inOrderTraversal()
+{
+    inOrderTraversal(root);
+}
 
+template<class Type>
+void BinarySearchTree<Type> :: preOrderTraversal()
+{
+    preOrderTraversal(root);
+}
 
+template<class Type>
+void BinarySearchTree<Type> :: postOrderTraversal()
 
+{
+    postOrderTraversal(root);
+}
 
+template<class Type>
+int BinarySearchTree<Type> :: calculateSize(BinarySearchTreeNode<Type> * start)
+{
+    return -99;
+}
 
+/*
+ In order traversal goesin the order Left, Root, Right
+ Notice that the non=recursive case does NOTHING 
+ */
 
+template<class Type>
+void BinarySearchTree<Type> :: inOrderTraversal(BinarySearchTreeNode<Type> * inStart)
+{
+    if(inStart != nullptr)
+    {
+        inOrderTraversal(inStart->getLeftChild());
+        cout << "Node Contents: " << inStart->getNodeData() << endl;
+        inOrderTraversal(inStart->getRightChild());
+    }
+}
+
+/*
+ Pre order traversal goes in the order Root, Left, Right
+ Notice that the non-recursive case does NOTHING 
+ */
+
+template<class Type>
+void BinarySearchTree<Type> :: preOrderTraversal(BinarySearchNode<Type> * preStart)
+{
+    if(preStart != nullptr)
+    {
+        cout << "Node Contents: " << preStart->getNodeData << endl;
+        preOrderTraversal(preStart->getLeftChild());
+        preOrderTraversal(preStart->getRightChild());
+    }
+}
+
+template<class Type>
+void BinarySearchTree<Type> :: postOrderTraversal(BinarySearchTreeNode<Type> * postStart)
+{
+    if(PostStart != nullptr)
+    {
+        postOrderTraversal(postStart->getLeftChild());
+        postOrderTraversal(postStart->getRightChild());
+        cout << "Node Contents: " << postStart->getNodeData << endl;
+    }
+}
 
 
 
