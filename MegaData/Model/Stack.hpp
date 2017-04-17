@@ -61,7 +61,7 @@ void Stack<Type> :: push(Type addedThing)
     }
     else
     {
-        this->getEnd()->SetNextPointer(addToStack);
+        this->getEnd()->setNextPointer(addToStack);
         addToStack->setPreviousPointer(this->getEnd());
     }
     this->setEnd(addToStack);

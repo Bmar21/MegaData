@@ -11,7 +11,7 @@
 #include "FoodItem.hpp"
 
 
-DoubleList<FoodItem> FileController :: readFoodItemDataFromFileAsList(string filename)
+DoubleList<FoodItem> FileController :: readFoodItemDataFileAsList(string filename)
 {
     DoubleList<FoodItem> dataSource;
     string currentCSVLine;
@@ -23,8 +23,8 @@ DoubleList<FoodItem> FileController :: readFoodItemDataFromFileAsList(string fil
     {
         while(!dataFile.eof())
         {
-            getLine(dataFile, currentCSVLine, '\r');
-            stringstream parseCVS(currentCSVLine);
+            getline(dataFile, currentCSVLine, '\r');
+            stringstream parseCSV(currentCSVLine);
             
             string title, tempCost, tempCalorie, tempTasty;
             //Matching data types for structure
@@ -34,9 +34,9 @@ DoubleList<FoodItem> FileController :: readFoodItemDataFromFileAsList(string fil
             
             //Each part as a string in order of the CSV - then convert after using stod, stoi
             getline(parseCSV, title, ',');
-            getLine(parseCSV, tempCost, ',');
-            getLine(parseCSV, tempCalorie, ',');
-            getLine(parseCSV, tempTasty, ',');
+            getline(parseCSV, tempCost, ',');
+            getline(parseCSV, tempCalorie, ',');
+            getline(parseCSV, tempTasty, ',');
             
             //Exclude first row headers
             if (rowCount != 0)
@@ -50,38 +50,38 @@ DoubleList<FoodItem> FileController :: readFoodItemDataFromFileAsList(string fil
                 temp.setCalories(calories);
                 temp.setDelicious(isDelish);
                 
-                dataSoource.add(temp);
+                dataSource.add(temp);
             }
             rowCount++;
-            //Remove this line!!!
+          
             cout << currentCSVLine << endl;
+            }
+            dataFile.close();
+            }
+            else
+            {
+                cerr << "NO FILE" << endl;
+            }
+        return dataSource;
         }
-        dataFile.close();
-    }
-    else
-    {
-        cerr << "NO FILE" << endl;
-    }
-    return dataSource;
-}
 
-void FileController :: writeFoodItemDataStatistics(DoubleList<FoodItem> dataSource, String filename)
-{
-    ofstream saveFile(fileName);
-    
-    if(saveFile.is_open())
-    {
-        saveFile << "These are the contents of the list" << endl;
-        for(int index = 0; index < dataSource.getSize(); index++)
+        void FileController :: writeFoodItemDataStatistics(DoubleList<FoodItem> dataSource, string filename)
         {
-            saveFile << "Food Title: " << dataSource.getFromIndex(index).getFoddName() << endl;
-        }
-    }
-    else
-    {
-        cerr << "File unavailable" << endl;
-    }
-    saveFile.close();
+            ofstream saveFile(filename);
+    
+            if(saveFile.is_open())
+            {
+                saveFile << "These are the contents of the list" << endl;
+                for(int index = 0; index < dataSource.getSize(); index++)
+                {
+                    saveFile << "Food Title: " << dataSource.getFromIndex(index).getFoodName() << endl;
+                }
+            }
+            else
+            {
+                cerr << "File unavailable" << endl;
+            }
+            saveFile.close();
 
-}
+        }
 

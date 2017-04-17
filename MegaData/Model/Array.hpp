@@ -28,11 +28,10 @@ public:
     ~Array<Type>();
     //Copy Constructor
     Array<Type>(const Array<Type> & toBeCopied);
+    Node<Type> * getFront() const;
     
     //Helper methods
     int getSize() const;
-    Node<Type> * getFront() const;
-    
     void setAtIndex(int index, Type value);
     Type getFromIndex(int index);
 };

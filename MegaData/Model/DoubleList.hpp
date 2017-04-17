@@ -10,6 +10,7 @@
 #define DoubleList_h
 
 #include "DoublyLinkedList.hpp"
+#include <assert.h>
 
 template <class Type>
 class DoubleList : public DoublyLinkedList<Type>
@@ -26,7 +27,14 @@ public:
     Type remove(int index);
     int indexOf(Type findMe);
     int nextIndexOf(Type value, int position);
+    int alternateIndexOf(Type findMe);
 };
+
+template<class Type>
+DoubleList<Type> :: DoubleList()
+{
+    
+}
 
 template<class Type>
 int DoubleList<Type> :: indexOf(Type findMe)
@@ -45,6 +53,31 @@ int DoubleList<Type> :: indexOf(Type findMe)
     }
     
     return index;
+}
+
+template<class Type>
+int DoubleList<Type> :: alternateIndexOf(Type findMe)
+{
+    int alternate = 0;
+    
+    for(BiDirectionalNode<Type> * search = this->getFront();
+        search != nullptr;
+        search = search->getNextPointer())
+        
+    {
+        if(findMe != search->getNodeData())
+        {
+            alternate++;
+        }
+    }
+    if(alternate >= this->getSize())
+    {
+        return -1;
+    }
+    else
+    {
+        return alternate;
+    }
 }
 
 template<class Type>
@@ -159,7 +192,7 @@ void DoubleList<Type> :: addAtIndexFast(int index, Type value)
 template<class Type>
 Type DoubleList<Type> :: getFromIndex(int index)
 {
-    assert(index >= 0 && index <this->getSize());
+    assert(index >= 0 && index < this->getSize());
     Type valueAtIndex;
     
     BiDirectionalNode<Type> * reference = this->getFront();
@@ -198,8 +231,13 @@ Type DoubleList<Type> :: remove(int index)
         }
         if(index == 0)
         {
-            this->setEnd(this->getFront()->getNextPointer());
-            this->setEnd()->setNextPointer(nullptr);
+            this->setFront(this->getFront()->getNextPointer());
+            this->getFront()->getPreviousPointer();
+        }
+        else if(index == this->getSize() - 1)
+        {
+            this->setEnd(this->getEnd()->getPreviousPointer());
+            this->getEnd()->setNextPointer(nullptr);
         }
     }
         else

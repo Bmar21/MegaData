@@ -24,7 +24,7 @@ class FileController
 private:
     DoubleList<FoodItem> foodItemList;
 public:
-    DoubleList<FoodItem> readFoodItemDataFileAsList(string filename)
+    DoubleList<FoodItem> readFoodItemDataFileAsList(string filename);
     void writeFoodItemDataStatistics(DoubleList<FoodItem> source, string filename);
 };
 

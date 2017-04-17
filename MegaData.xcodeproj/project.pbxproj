@@ -139,8 +139,8 @@
 				28A79E181E6F4265005E399B /* Queue.hpp */,
 				28A79E191E6F4A8B005E399B /* Stack.hpp */,
 				281FCD891E7C5DAD009B6891 /* Timer.hpp */,
-				2891DD331E9D58B100900A85 /* Tree.hpp */,
 				281FCD881E7C5DAD009B6891 /* Timer.cpp */,
+				2891DD331E9D58B100900A85 /* Tree.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
