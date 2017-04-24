@@ -19,6 +19,10 @@
 #include "../Model/CircularList.hpp"
 #include "../Model/FoodItem.hpp"
 #include "../Model/Timer.hpp"
+#include "../Model/BiDirectionalNode.hpp"
+#include "../Model/BinarySearchTree.h"
+#include "../Model/BinarySearchTreeNode.hpp"
+#include "../Model/Tree.hpp"
 #include<string>
 
 using namespace std;
@@ -36,6 +40,10 @@ private:
     void testListTiming();
     void testFoodQueue();
     void testIntStack();
+    void testBinarySearchTreeOperations();
+    void testBinarySearchData();
+    void testAVLTreeOperations();
+    void AVLData();
     Node<int> numberNode;
     Node<string> wordNode;
 public:

@@ -12,7 +12,7 @@
 #include "Node.hpp"
 
 template<class Type>
-class BinarySearchTreeNode : public Node<Type.
+class BinarySearchTreeNode : public Node<Type>
 {
 private:
     BinarySearchTreeNode<Type> * root;
@@ -23,7 +23,7 @@ private:
 public:
     BinarySearchTreeNode();
     ~BinarySearchTreeNode();
-    BinarySearchTree(Type data);
+    BinarySearchTreeNode(Type data);
     
     
     BinarySearchTreeNode<Type> * getRootPointer();
@@ -77,8 +77,8 @@ BinarySearchTreeNode<Type> * BinarySearchTreeNode<Type> :: getRightChild()
     return this->RightChild;
 }
 
-templaet<class Type>
-BinarySearchTreeNode<Type> * setRootPointer(BinarySearchTreeNode<Type> * root)
+template<class Type>
+void BinarySearchTreeNode<Type> :: setRootPointer(BinarySearchTreeNode<Type>* root)
 {
     this->root = root;
 }
