@@ -23,6 +23,7 @@
 #include "../Model/BinarySearchTree.h"
 #include "../Model/BinarySearchTreeNode.hpp"
 #include "../Model/Tree.hpp"
+#include "../Model/AVLTree.hpp"
 #include<string>
 
 using namespace std;

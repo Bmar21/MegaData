@@ -7,10 +7,68 @@
 //
 
 #include "CrimeData.hpp"
-#include <cmath>
 
 CrimeData :: CrimeData()
 {
+    
+}
+
+CrimeData :: CrimeData(string currentCSVLine)
+{
+    stringstream parseCSV(currentCSVLine);
+    
+    string department, tempPopulation, tempProperty, tempBurglary, tempLarceny, tempMotor, tempViolent, tempAssault, tempMurder, tempRape, tempRobbery, state, tempAllProperty, tempAllBurglary, tempAllLarceny, tempAllMotor, tempAllViolent, tempAllAssault, tempAllMurder, tempAllRape, tempAllRobbery, tempYear;
+    
+    getline(parseCSV, department, ',');
+    getline(parseCSV, tempPopulation, ',');
+    getline(parseCSV, tempProperty, ',');
+    getline(parseCSV, tempBurglary, ',');
+    getline(parseCSV, tempLarceny, ',');
+    getline(parseCSV, tempMotor, ',');
+    getline(parseCSV, tempViolent, ',');
+    getline(parseCSV, tempAssault, ',');
+    getline(parseCSV, tempMurder, ',');
+    getline(parseCSV, tempRape, ',');
+    getline(parseCSV, tempRobbery, ',');
+    getline(parseCSV, state, ',');
+    getline(parseCSV, tempAllProperty, ',');
+    getline(parseCSV, tempAllBurglary, ',');
+    getline(parseCSV, tempAllLarceny, ',');
+    getline(parseCSV, tempAllMotor, ',');
+    getline(parseCSV, tempAllViolent, ',');
+    getline(parseCSV, tempAllAssault, ',');
+    getline(parseCSV, tempAllMurder, ',');
+    getline(parseCSV, tempAllRape, ',');
+    getline(parseCSV, tempAllRobbery, ',');
+    getline(parseCSV, tempYear, ',');
+    
+    this->setDepartment(department);
+    this->setPopulation(stoi(tempPopulation));
+    this->setAllPropertyRates(stod(tempProperty));
+    this->setBurglaryRates(stod(tempBurglary));
+    this->setLarcenyRates(stod(tempLarceny));
+    this->setMotorRates(stod(tempMotor));
+    this->setAllViolentRates(stod(tempViolent));
+    this->setAssaultRates(stod(tempAssault));
+    this->setMurderRates(stod(tempMurder));
+    this->setRapeRates(stod(tempRape));
+    this->setRobberyRates(stod(tempRobbery));
+    this->setState(state);
+    this->setAllPropertyCrime(stoi(tempAllProperty));
+    this->setAllBurglary(stoi(tempAllBurglary));
+    this->setAllLarceny(stoi(tempAllLarceny));
+    this->setAllMotor(stoi(tempAllMotor));
+    this->setAllViolent(stoi(tempAllViolent));
+    this->setAllAssault(stoi(tempAllAssault));
+    this->setAllMurder(stoi(tempAllMurder));
+    this->setAllRape(stoi(tempAllRape));
+    this->setAllRobbery(stoi(tempAllRobbery));
+    this->setYear(stoi(tempYear));
+}
+
+ostream & operator << (ostream &outputStream, const CrimeData & outputData)
+{
+    return outputStream << outputData.getDepartment() << "had " << outputData.getAllViolentRates() << " in year: " << outputData.getYear();
 }
 
 string CrimeData :: getDepartment() const
