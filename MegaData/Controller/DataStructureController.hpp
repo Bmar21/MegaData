@@ -24,6 +24,7 @@
 #include "../Model/BinarySearchTreeNode.hpp"
 #include "../Model/Tree.hpp"
 #include "../Model/AVLTree.hpp"
+#include "../Model/CrimeData.hpp"
 #include<string>
 
 using namespace std;

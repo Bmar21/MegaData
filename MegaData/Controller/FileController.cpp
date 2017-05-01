@@ -82,6 +82,5 @@ DoubleList<FoodItem> FileController :: readFoodItemDataFileAsList(string filenam
                 cerr << "File unavailable" << endl;
             }
             saveFile.close();
-
         }
 

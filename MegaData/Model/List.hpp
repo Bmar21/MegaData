@@ -22,22 +22,22 @@ private:
     Node<Type> * end;
     
 public:
+    List<Type>(int size);
     List<Type>();
-    List<Type>(const List<Type> & source);
+    List<Type>(const List<Type> & toBeCopied);
     ~List<Type>();
     
-    int getSize() const;
-    Node<Type> * getFrom() const;
-    Node<Type> * getEnd() const;
-    
+    Type getFromIndex(int index);
+    Type setAtIndex(int index, Type data);
     void addAtIndex(int index, Type value);
     void addFront(Type value);
     void addEnd(Type value);
-    Type remove(int index, Type data);
-    Type setAtIndex(int index, Type data);
-    Type getFromIndex(int index);
+    
+    Type remove(int index);
     bool contains(Type data);
-    Node<Type> * getFront() const;
+    int getSize() const;
+    Node<Type> * getFrom() const;
+    Node<Type> * getEnd() const;
 };
     
 template <class Type>
@@ -144,7 +144,7 @@ Type List<Type> :: setAtIndex(int index, Type data)
 }
     
 template <class Type>
-Type List<Type> :: remove(int index, Type data)
+Type List<Type> :: remove(int index)
 {
     assert(index >= 0 && index <= size);
     Type removed;
@@ -163,7 +163,7 @@ Type List<Type> :: remove(int index, Type data)
         for(int spot = 0; spot < index; spot++)
         {
             previous = current;
-            current = current->getNodePointer;
+            current = current->getNodePointer();
         }
             
         toBeRemoved = current;
@@ -186,7 +186,7 @@ Type List<Type> :: remove(int index, Type data)
     delete toBeRemoved;
     
     size--;
-    return remove;
+    return removed;
 }
 
 template <class Type>

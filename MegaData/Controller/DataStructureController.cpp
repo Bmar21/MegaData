@@ -13,7 +13,7 @@ using namespace std;
 
 DataStructureController :: DataStructureController()
 {
-    wordNode = Node<sting>("derpy mcderpface");
+    wordNode = Node<string>("derpy mcderpface");
     numberNode = Node<int>();
     
 }
@@ -165,12 +165,12 @@ void DataStructureController :: testBinarySearchTreeOperations()
     
 }
 
-void DataConstructorController :: testBinarySearchData()
+void DataStructureController :: testBinarySearchData()
 {
     FileController fileData;
     Timer treeTimer;
     treeTimer.startTimer();
-    BinarySearchTree<CrimeData> crimeTree = fileData.readCrimeDataToBinarySearchTree("/Users/cody.henrichsen/Documents/crimes.csv");
+    BinarySearchTree<fileData> crimeTree = fileData.readCrimeDataToBinarySearchTree("/Users/cody.henrichsen/Documents/crimes.csv");
     treeTimer.stopTimer();
     
     int count = crimeTree.getSize();
@@ -185,6 +185,7 @@ void DataConstructorController :: testBinarySearchData()
     cout << "The time to read in the tree was: " << endl;
     
     treeTimer.displayTimerInformation();
+}
     
 void DataStructureController :: testAVLTreeOperations()
 {
@@ -208,7 +209,7 @@ void DataStructureController :: testAVLTreeOperations()
     cout << "Balanced should be true || 1 and is: " << numbers.isBalanced() << endl;
 }
     
-void DataContstructorController :: testAVLData()
+void DataStructureController :: testAVLData()
 {
     FileController fileData;
     Timer treeTimer;
@@ -228,14 +229,14 @@ void DataContstructorController :: testAVLData()
     treeTimer.displayTimerInformation();
 }
 
-    BinarySearchTree<CrimeData> FileController :: readCrimeDataToBinarySearchTree(string filename)
-    {
-        BinarySearchTree<CrimeData> crimeData;
-        string currentCSVLine;
-        int rowCount = 0;
-        ifstream dataFile(filename);
+BinarySearchTree<CrimeData> FileController :: readCrimeDataToBinarySearchTree(string filename)
+{
+    BinarySearchTree<CrimeData> crimeData;
+    string currentCSVLine;
+    int rowCount = 0;
+    ifstream dataFile(filename);
         
-        if(dataFile.is_open())
+    if(dataFile.is_open())
         {
             while(!dataFile.eof())
             {
@@ -259,93 +260,93 @@ void DataContstructorController :: testAVLData()
         return crimeData;
     }
     
-    CrimeData :: CrimeData(string currentCSVLine)
-    {
-        stringstream parseCSV(currentCSVLine);
+CrimeData :: CrimeData(string currentCSVLine)
+{
+    stringstream parseCSV(currentCSVLine);
         
-        string department, tempPopulation, tempProperty, tempBurglary, tempLarceny, tempMotor, tempViolent, tempAssault, tempMurder, tempRape, tempRobbery, state, tempAllProperty, tempAllBurglary, tempAllLarceny, tempAllMotor, tempAllViolent, tempAllAssault, tempAllMurder, tempAllRape, tempAllRobbery, tempYear;
+    string department, tempPopulation, tempProperty, tempBurglary, tempLarceny, tempMotor, tempViolent, tempAssault, tempMurder, tempRape, tempRobbery, state, tempAllProperty, tempAllBurglary, tempAllLarceny, tempAllMotor, tempAllViolent, tempAllAssault, tempAllMurder, tempAllRape, tempAllRobbery, tempYear;
         
-        getline(parseCSV, department, ',');
-        getline(parseCSV, tempPopulation, ',');
-        getline(parseCSV, tempProperty, ',');
-        getline(parseCSV, tempBurglary, ',');
-        getline(parseCSV, tempLarceny, ',');
-        getline(parseCSV, tempMotor, ',');
-        getline(parseCSV, tempViolent, ',');
-        getline(parseCSV, tempAssault, ',');
-        getline(parseCSV, tempMurder, ',');
-        getline(parseCSV, tempRape, ',');
-        getline(parseCSV, tempRobbery, ',');
-        getline(parseCSV, state, ',');
-        getline(parseCSV, tempAllProperty, ',');
-        getline(parseCSV, tempAllBurglary, ',');
-        getline(parseCSV, tempAllLarceny, ',');
-        getline(parseCSV, tempAllMotor, ',');
-        getline(parseCSV, tempAllViolent, ',');
-        getline(parseCSV, tempAllAssault, ',');
-        getline(parseCSV, tempAllMurder, ',');
-        getline(parseCSV, tempAllRape, ',');
-        getline(parseCSV, tempAllRobbery, ',');
-        getline(parseCSV, tempYear, ',');
+    getline(parseCSV, department, ',');
+    getline(parseCSV, tempPopulation, ',');
+    getline(parseCSV, tempProperty, ',');
+    getline(parseCSV, tempBurglary, ',');
+    getline(parseCSV, tempLarceny, ',');
+    getline(parseCSV, tempMotor, ',');
+    getline(parseCSV, tempViolent, ',');
+    getline(parseCSV, tempAssault, ',');
+    getline(parseCSV, tempMurder, ',');
+    getline(parseCSV, tempRape, ',');
+    getline(parseCSV, tempRobbery, ',');
+    getline(parseCSV, state, ',');
+    getline(parseCSV, tempAllProperty, ',');
+    getline(parseCSV, tempAllBurglary, ',');
+    getline(parseCSV, tempAllLarceny, ',');
+    getline(parseCSV, tempAllMotor, ',');
+    getline(parseCSV, tempAllViolent, ',');
+    getline(parseCSV, tempAllAssault, ',');
+    getline(parseCSV, tempAllMurder, ',');
+    getline(parseCSV, tempAllRape, ',');
+    getline(parseCSV, tempAllRobbery, ',');
+    getline(parseCSV, tempYear, ',');
         
-        this->setDepartment(department);
-        this->setPopulation(stoi(tempPopulation));
-        this->setAllPropertyRates(stod(tempProperty));
-        this->setBurglaryRates(stod(tempBurglary));
-        this->setLarcenyRates(stod(tempLarceny));
-        this->setMotorRates(stod(tempMotor));
-        this->setAllViolentRates(stod(tempViolent));
-        this->setAssaultRates(stod(tempAssault));
-        this->setMurderRates(stod(tempMurder));
-        this->setRapeRates(stod(tempRape));
-        this->setRobberyRates(stod(tempRobbery));
-        this->setState(state);
-        this->setAllPropertyCrime(stoi(tempAllProperty));
-        this->setAllBurglary(stoi(tempAllBurglary));
-        this->setAllLarceny(stoi(tempAllLarceny));
-        this->setAllMotor(stoi(tempAllMotor));
-        this->setAllViolent(stoi(tempAllViolent));
-        this->setAllAssault(stoi(tempAllAssault));
-        this->setAllMurder(stoi(tempAllMurder));
-        this->setAllRape(stoi(tempAllRape));
-        this->setAllRobbery(stoi(tempAllRobbery));
-        this->setYear(stoi(tempYear));
-    }
-    CrimeData stream operator overload
-    CrimeData.hpp
-    friend ostream & operator << (ostream &outputStream, const CrimeData & outputData);
-    CrimeData.cpp
-    ostream & operator << (ostream &outputStream, const CrimeData & outputData)
-    {
-        return outputStream << outputData.getDepartment() << "had " << outputData.getAllViolentRates() << " in year: " << outputData.getYear();
-    }
+    this->setDepartment(department);
+    this->setPopulation(stoi(tempPopulation));
+    this->setAllPropertyRates(stod(tempProperty));
+    this->setBurglaryRates(stod(tempBurglary));
+    this->setLarcenyRates(stod(tempLarceny));
+    this->setMotorRates(stod(tempMotor));
+    this->setAllViolentRates(stod(tempViolent));
+    this->setAssaultRates(stod(tempAssault));
+    this->setMurderRates(stod(tempMurder));
+    this->setRapeRates(stod(tempRape));
+    this->setRobberyRates(stod(tempRobbery));
+    this->setState(state);
+    this->setAllPropertyCrime(stoi(tempAllProperty));
+    this->setAllBurglary(stoi(tempAllBurglary));
+    this->setAllLarceny(stoi(tempAllLarceny));
+    this->setAllMotor(stoi(tempAllMotor));
+    this->setAllViolent(stoi(tempAllViolent));
+    this->setAllAssault(stoi(tempAllAssault));
+    this->setAllMurder(stoi(tempAllMurder));
+    this->setAllRape(stoi(tempAllRape));
+    this->setAllRobbery(stoi(tempAllRobbery));
+    this->setYear(stoi(tempYear));
+}
+CrimeData stream operator overload
+CrimeData.hpp
+friend ostream & operator << (ostream &outputStream, const CrimeData & outputData);
+CrimeData.cpp
+ostream & operator << (ostream &outputStream, const CrimeData & outputData)
+{
+    return outputStream << outputData.getDepartment() << "had " << outputData.getAllViolentRates() << " in year: " << outputData.getYear();
+}
     
-    AVLTree<CrimeData> FileController :: readCrimeDataToAVLTree(string filename)
+AVLTree<CrimeData> FileController :: readCrimeDataToAVLTree(string filename)
+{
+    AVLTree<CrimeData> crimeData;
+    string currentCSVLine;
+    int rowCount = 0;
+        
+    ifstream dataFile(filename);
+        
+    if(dataFile.is_open())
     {
-        AVLTree<CrimeData> crimeData;
-        string currentCSVLine;
-        int rowCount = 0;
-        
-        ifstream dataFile(filename);
-        
-        if(dataFile.is_open())
+        while(!dataFile.eof())
         {
-            while(!dataFile.eof())
+            getline(dataFile, currentCSVLine, '\r');
+            //Exclude first row headers
+            if(rowCount != 0)
             {
-                getline(dataFile, currentCSVLine, '\r');
-                //Exclude first row headers
-                if(rowCount != 0)
-                {
-                    CrimeData rowData(currentCSVLine);
-                    crimeData.insert(rowData);
-                }
-                rowCount++;
+                CrimeData rowData(currentCSVLine);
+                crimeData.insert(rowData);
             }
-            dataFile.close();
+            rowCount++;
         }
-        else
-        {
-            cerr << "NO FILE" << endl;
-        }
-        return crimeData;
+        dataFile.close();
     }
+    else
+    {
+        cerr << "NO FILE" << endl;
+    }
+    return crimeData;
+}

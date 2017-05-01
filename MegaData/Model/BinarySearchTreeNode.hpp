@@ -74,7 +74,7 @@ BinarySearchTreeNode<Type> * BinarySearchTreeNode<Type> :: getLeftChild()
 template<class Type>
 BinarySearchTreeNode<Type> * BinarySearchTreeNode<Type> :: getRightChild()
 {
-    return this->RightChild;
+    return this->rightChild;
 }
 
 template<class Type>
