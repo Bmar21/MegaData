@@ -9,6 +9,7 @@
 #include "DataStructureController.hpp"
 #include <iostream>
 #include "../Model/IntNodeArray.hpp"
+
 using namespace std;
 
 DataStructureController :: DataStructureController()
@@ -29,7 +30,7 @@ void DataStructureController :: testNodes()
 void DataStructureController :: start()
 {
     cout << "Starting the project" << endl;
-
+    
     
     cout << "Finished testing" << endl;
 }
@@ -121,15 +122,6 @@ void DataStructureController :: testListTiming()
     totalTimer.displayTimerInformation();
 }
 
-void DataStructureController :: testIntStack()
-{
-    Stack<int> numberStack;
-    numberStack.add(2315);
-    numberStack.push(32);
-    int testValue = numberStack.pop();
-    cout << "Test value is " << testValue << " and should be 32" << endl;
-}
-
 void DataStructureController :: testFoodQueue()
 {
     Queue<FoodItem> tastyFood;
@@ -140,6 +132,15 @@ void DataStructureController :: testFoodQueue()
     
     FoodItem removed = tastyFood.dequeue();
     cout << "The item removed from the queue was: " << removed.getFoodName() << " and should be: spicy chinese dish" << endl;
+}
+
+void DataStructureController :: testIntStack()
+{
+    Stack<int> numberStack;
+    numberStack.add(2315);
+    numberStack.push(32);
+    int testValue = numberStack.pop();
+    cout << "Test value is " << testValue << " and should be 32" << endl;
 }
 
 void DataStructureController :: testBinarySearchTreeOperations()
@@ -186,7 +187,7 @@ void DataStructureController :: testBinarySearchData()
     
     treeTimer.displayTimerInformation();
 }
-    
+
 void DataStructureController :: testAVLTreeOperations()
 {
     AVLTree<int> numbers;
@@ -199,16 +200,16 @@ void DataStructureController :: testAVLTreeOperations()
     numbers.insert(43243);
     numbers.insert(-45677654);
     numbers.insert(92165);
-        
+    
     cout << "Size should be 8 and is: " << numbers.getSize() << endl;
     cout << "In order traversal should be: \n\t-45677654 \n\t-123 \n\t10 \n\t43 \n\t9843 \n\t23465 \n\t43243 \n\t92165" << endl;
-        
+    
     numbers.inOrderTraversal();
-        
+    
     cout << "Height should be 4 and is: " << numbers.getHeight() << endl;
     cout << "Balanced should be true || 1 and is: " << numbers.isBalanced() << endl;
 }
-    
+
 void DataStructureController :: testAVLData()
 {
     FileController fileData;
@@ -216,16 +217,16 @@ void DataStructureController :: testAVLData()
     treeTimer.startTimer();
     AVLTree<CrimeData> crimeTree = fileData.readCrimeDataToAVLTree("/Users/cody.henrichsen/Documents/crimes.csv");
     treeTimer.stopTimer();
-        
+    
     int count = crimeTree.getSize();
     int height = crimeTree.getHeight();
     bool complete = crimeTree.isComplete();
     bool balanced = crimeTree.isBalanced();
-        
+    
     cout << "The count of the tree is: " << count << ", the height is " << height << ".\n The tree's balanced status is " << balanced << ", and its complete status is " << complete << endl;
-        
+    
     cout << "The time to read in the tree was: " << endl;
-        
+    
     treeTimer.displayTimerInformation();
 }
 
@@ -235,37 +236,37 @@ BinarySearchTree<CrimeData> FileController :: readCrimeDataToBinarySearchTree(st
     string currentCSVLine;
     int rowCount = 0;
     ifstream dataFile(filename);
-        
+    
     if(dataFile.is_open())
+    {
+        while(!dataFile.eof())
         {
-            while(!dataFile.eof())
+            getline(dataFile, currentCSVLine, '\r');
+            
+            //Exclude first row headers
+            if(rowCount != 0)
             {
-                getline(dataFile, currentCSVLine, '\r');
-                
-                //Exclude first row headers
-                if(rowCount != 0)
-                {
-                    CrimeData rowData(currentCSVLine);
-                    crimeData.insert(rowData);
-                }
-                rowCount++;
+                CrimeData rowData(currentCSVLine);
+                crimeData.insert(rowData);
             }
-            dataFile.close();
+            rowCount++;
         }
-        
-        else
-        {
-            cerr << "NO FILE" << endl;
-        }
-        return crimeData;
+        dataFile.close();
     }
     
+    else
+    {
+        cerr << "NO FILE" << endl;
+    }
+    return crimeData;
+}
+
 CrimeData :: CrimeData(string currentCSVLine)
 {
     stringstream parseCSV(currentCSVLine);
-        
+    
     string department, tempPopulation, tempProperty, tempBurglary, tempLarceny, tempMotor, tempViolent, tempAssault, tempMurder, tempRape, tempRobbery, state, tempAllProperty, tempAllBurglary, tempAllLarceny, tempAllMotor, tempAllViolent, tempAllAssault, tempAllMurder, tempAllRape, tempAllRobbery, tempYear;
-        
+    
     getline(parseCSV, department, ',');
     getline(parseCSV, tempPopulation, ',');
     getline(parseCSV, tempProperty, ',');
@@ -288,7 +289,7 @@ CrimeData :: CrimeData(string currentCSVLine)
     getline(parseCSV, tempAllRape, ',');
     getline(parseCSV, tempAllRobbery, ',');
     getline(parseCSV, tempYear, ',');
-        
+    
     this->setDepartment(department);
     this->setPopulation(stoi(tempPopulation));
     this->setAllPropertyRates(stod(tempProperty));
@@ -320,15 +321,15 @@ ostream & operator << (ostream &outputStream, const CrimeData & outputData)
 {
     return outputStream << outputData.getDepartment() << "had " << outputData.getAllViolentRates() << " in year: " << outputData.getYear();
 }
-    
+
 AVLTree<CrimeData> FileController :: readCrimeDataToAVLTree(string filename)
 {
     AVLTree<CrimeData> crimeData;
     string currentCSVLine;
     int rowCount = 0;
-        
+    
     ifstream dataFile(filename);
-        
+    
     if(dataFile.is_open())
     {
         while(!dataFile.eof())
