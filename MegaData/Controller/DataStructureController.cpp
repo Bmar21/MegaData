@@ -35,6 +35,37 @@ void DataStructureController :: start()
     cout << "Finished testing" << endl;
 }
 
+BinarySearchTree<CrimeData> DataStructureController :: readCrimeDataToBinarySearchTree(string filename)
+{
+    BinarySearchTree<CrimeData> crimeData;
+    string currentCSVLine;
+    int rowCount = 0;
+    ifstream dataFile(filename);
+    
+    if(dataFile.is_open())
+    {
+        while(!dataFile.eof())
+        {
+            getline(dataFile, currentCSVLine, '\r');
+            
+            //Exclude first row headers
+            if(rowCount != 0)
+            {
+                CrimeData rowData(currentCSVLine);
+                crimeData.insert(rowData);
+            }
+            rowCount++;
+        }
+        dataFile.close();
+    }
+    
+    else
+    {
+        cerr << "NO FILE" << endl;
+    }
+    return crimeData;
+}
+
 void DataStructureController :: testIntArray()
 {
     cout << "Testing the array" << endl;
@@ -168,7 +199,7 @@ void DataStructureController :: testBinarySearchTreeOperations()
 
 void DataStructureController :: testBinarySearchData()
 {
-    FileController fileData;
+    DataStructureController fileData;
     Timer treeTimer;
     treeTimer.startTimer();
     BinarySearchTree<fileData> crimeTree = fileData.readCrimeDataToBinarySearchTree("/Users/cody.henrichsen/Documents/crimes.csv");
@@ -212,7 +243,7 @@ void DataStructureController :: testAVLTreeOperations()
 
 void DataStructureController :: testAVLData()
 {
-    FileController fileData;
+    DataStructureController fileData;
     Timer treeTimer;
     treeTimer.startTimer();
     AVLTree<CrimeData> crimeTree = fileData.readCrimeDataToAVLTree("/Users/cody.henrichsen/Documents/crimes.csv");
@@ -228,37 +259,6 @@ void DataStructureController :: testAVLData()
     cout << "The time to read in the tree was: " << endl;
     
     treeTimer.displayTimerInformation();
-}
-
-BinarySearchTree<CrimeData> FileController :: readCrimeDataToBinarySearchTree(string filename)
-{
-    BinarySearchTree<CrimeData> crimeData;
-    string currentCSVLine;
-    int rowCount = 0;
-    ifstream dataFile(filename);
-    
-    if(dataFile.is_open())
-    {
-        while(!dataFile.eof())
-        {
-            getline(dataFile, currentCSVLine, '\r');
-            
-            //Exclude first row headers
-            if(rowCount != 0)
-            {
-                CrimeData rowData(currentCSVLine);
-                crimeData.insert(rowData);
-            }
-            rowCount++;
-        }
-        dataFile.close();
-    }
-    
-    else
-    {
-        cerr << "NO FILE" << endl;
-    }
-    return crimeData;
 }
 
 CrimeData :: CrimeData(string currentCSVLine)
@@ -313,7 +313,7 @@ CrimeData :: CrimeData(string currentCSVLine)
     this->setAllRobbery(stoi(tempAllRobbery));
     this->setYear(stoi(tempYear));
 }
-CrimeData stream operator overload
+CrimeData stream; operator overload
 CrimeData.hpp
 friend ostream & operator << (ostream &outputStream, const CrimeData & outputData);
 CrimeData.cpp
@@ -322,7 +322,7 @@ ostream & operator << (ostream &outputStream, const CrimeData & outputData)
     return outputStream << outputData.getDepartment() << "had " << outputData.getAllViolentRates() << " in year: " << outputData.getYear();
 }
 
-AVLTree<CrimeData> FileController :: readCrimeDataToAVLTree(string filename)
+AVLTree<CrimeData> DataStructureController :: readCrimeDataToAVLTree(string filename)
 {
     AVLTree<CrimeData> crimeData;
     string currentCSVLine;

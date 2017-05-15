@@ -25,6 +25,8 @@
 #include "../Model/Tree.hpp"
 #include "../Model/AVLTree.hpp"
 #include "../Model/CrimeData.hpp"
+#include "../Model/HashNode.hpp"
+#include "../Model/HashTable.hpp" 
 #include<string>
 
 using namespace std;
@@ -45,11 +47,13 @@ private:
     void testBinarySearchTreeOperations();
     void testBinarySearchData();
     void testAVLTreeOperations();
-    void AVLData();
+    void testAVLData();
     Node<int> numberNode;
     Node<string> wordNode;
 public:
     DataStructureController();
+    BinarySearchTree<CrimeData> readCrimeDataToBinarySearchTree(string filename);
+    AVLTree<CrimeData> readCrimeDataToAVLTree(string filename);
     void start();
     
 };
