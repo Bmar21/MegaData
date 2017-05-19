@@ -39,27 +39,33 @@ public:
     Node<Type> * getFrom() const;
     Node<Type> * getEnd() const;
 };
-    
+
 template <class Type>
 List<Type> :: List()
+{
+    this->size = 0;
+    this->front = nullptr;
+    this->end = nullptr;
+}
+
+template <class Type>
+List<Type> :: ~List()
+{
+    Node<Type> * destruction = front;
+    while(front != nullptr)
     {
-        this->size = 0;
-        this->front = nullptr;
-        this->end = nullptr;
+        front = front->getNodePointer();
+        delete destruction;
+        destruction = front;
     }
-    
-    template <class Type>
-    List<Type> :: ~List()
-    {
-        Node<Type> * destruction = front;
-        while(front != nullptr)
-        {
-            front = front->getNodePointer();
-            delete destruction;
-            destruction = front;
-        }
-    }
-    
+}
+
+template<class Type>
+int List<Type> :: getSize() const
+{
+    return this->size;
+}
+
 template <class Type>
 void List<Type> :: addFront(Type value)
 {
@@ -74,7 +80,7 @@ void List<Type> :: addFront(Type value)
     }
     size++;
 }
-    
+
 template <class Type>
 void List<Type> :: addEnd(Type data)
 {
@@ -91,7 +97,7 @@ void List<Type> :: addEnd(Type data)
     }
     size++;
 }
-    
+
 template <class Type>
 void List<Type> :: addAtIndex(int index, Type value)
 {
@@ -114,7 +120,7 @@ void List<Type> :: addAtIndex(int index, Type value)
         {
             previous = current;
             current = current->getNodePointer();
-
+            
         }
         
         previous->setNodePointer(insertedNode);
@@ -123,36 +129,36 @@ void List<Type> :: addAtIndex(int index, Type value)
         size++;
     }
 }
-    
+
 template <class Type>
 Type List<Type> :: setAtIndex(int index, Type data)
 {
     assert(index >= 0 && index < size);
     Type removeData;
-        
+    
     Node<Type> * current = front;
-        
+    
     for (int spot = 0; spot < index; spot++)
     {
         current = current->getNodePointer();
     }
-        
+    
     removeData = current->getNodeData();
     current->setNodeData(data);
-        
+    
     return removeData;
 }
-    
+
 template <class Type>
 Type List<Type> :: remove(int index)
 {
     assert(index >= 0 && index <= size);
     Type removed;
-        
+    
     Node<Type> * current = front;
     Node<Type> * previous = nullptr;
     Node<Type> * toBeRemoved = nullptr;
-        
+    
     if(index == 0)
     {
         toBeRemoved = front;
@@ -165,7 +171,7 @@ Type List<Type> :: remove(int index)
             previous = current;
             current = current->getNodePointer();
         }
-            
+        
         toBeRemoved = current;
         previous->setNodePointer(nullptr);
         this->end = previous;
@@ -177,7 +183,7 @@ Type List<Type> :: remove(int index)
             previous = current;
             current = current->getNodePointer();
         }
-            
+        
         toBeRemoved = current;
         current = toBeRemoved->getNodePointer();
         previous->setNodePointer(current);

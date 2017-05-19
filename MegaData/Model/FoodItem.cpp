@@ -34,6 +34,10 @@ double FoodItem :: getCost()
     return cost;
 }
 
+string FoodItem :: getFoodName()
+{
+    return foodName;
+}
 bool FoodItem :: isDelicious()
 {
     return delicious;
